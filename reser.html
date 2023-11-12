@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reserve</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0">
+<script src="jQuery-3.6.0.min.js"></script>
+<style type="text/css">
+:root{
+            --main-color:#a32cc4;
+            --black:#13131a;
+            --bg:#010103;
+            --border:.1rem solid rgba(225,225,225,.3);
+        }
+        *{
+           
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+           
+            transition: .2s linear;
+        }
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+    body{
+        background: url(res.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+       
+    .header
+        {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg);
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+            padding:1.5rem 7%;
+            border-bottom:var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .header .navbar a{
+            margin:0 1rem;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+        .header .navbar a:hover{
+            color: var(--main-color);
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+        .header .icons div{
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+            margin-left: 2rem;
+        }
+        .header .icons div:hover{
+            color: var(--main-color);
+        }
+h1
+{
+text-align:left;
+}
+
+#a1:hover
+{
+color:yellow;
+}
+#h2
+{
+font-family:Lucida Handwriting,cursive;
+font-size:25px;
+color:brown;
+text-align:left;
+background-color:lightgrey;
+}
+.container
+{
+position: relative;
+top: 150px;
+width:1000px;
+margin:auto;
+border:3px solid grey;
+border-radius: 5px;
+background-color: black;
+padding: 5px;
+}
+#h3
+{
+text-align:center;
+color:pink;
+font-family:Papyrus, fantasy;
+font-size:30px;
+}
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white; 
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    color: black;
+    background-color: lightgrey;
+    border: 2px solid dimgrey;
+    border-radius: 4px;
+}
+
+input
+{
+width: 80%;
+padding: 6px;
+color:black;
+background-color:lightgrey;
+border: 2px solid dimgrey;
+border-radius: 4px;
+}
+
+
+#select{
+position:absolute;
+right:100px;
+top:140px;
+
+}
+input[type=button]:hover
+{
+opacity:0.9;
+}
+footer
+{
+position: relative;
+top: 233px;
+font-family:Apple Chancery,cursive;
+font-size:18px;
+background-color:#a32cc4;
+color:white;
+padding-bottom:15px;
+}
+button {
+position:absolute;
+right:480px;
+top:200px;
+background-color:#a32cc4;
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    height: auto;
+    width: auto;
+}
+@media only screen and (max-width: 768px) {
+    .header {
+        padding: 1.5rem 2%;
+    }
+
+    .header .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        z-index: 999;
+    }
+
+    .header .navbar.active {
+        display: flex;
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 10px 0;
+        font-size: 1.6rem;
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    button {
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+
+    footer {
+        top: 300px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="" height="80px" width="75px">
+        </a>
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="signup.html">SIGNUP</a>        
+            <a href="service.html">CUSTOMIZE EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="reser.html">PACKAGE EVENTS</a>
+            <a href="feedback.html">FEEDBACK</a>
+            <a href="home.html#about">ABOUT</a>
+        </nav>
+<div class="icons">
+            <div onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+<main>
+<br><br><br><br><br>
+<span id="h2"><b>&nbsp;$ Reserve a table</b></span>
+<br><br>
+
+<div class="container" >
+<p id="h3"><b>Event Reservation</b></p>
+<center>
+<form id="myForm">
+<table>
+<tr>
+    <td>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="" required pattern="[A-Za-z]+" onblur="checkName()" onchange="this.setCustomValidity('')">
+    </td>
+    <td>
+        <label for="phone">Mobile number</label>
+        <input type="text" id="phone" name="" required pattern="[0-9]{10}" onblur="checkMob()" onchange="this.setCustomValidity('')">
+    </td>
+    <td>
+        <label for="mail">Email</label>
+        <input type="email" id="mail" required onblur="checkMail()" onchange="this.setCustomValidity('')">
+    </td>
+</tr>
+<tr>
+    <td>
+        <label for="resdate">Date</label>
+        <input type="date" id="resdate" name="resdate" required>
+    </td>
+    <td>
+        <label for="restime">Time</label>
+        <input type="time" id="restime" name="" required>
+    </td>
+    <td>
+        <label for="event">Type Of Event</label>
+        <select id="event" required>
+            <option>Select an Event</option>
+            <option>Wedding - ₹6,00,000</option>
+            <option>Engagement - ₹3,00,000</option>
+            <option>Birthday - ₹50,000</option>
+            <option>Pride To Be - ₹20,000</option>
+            <option>Bachelors Party - ₹15,000</option>
+            <option>House Warming - ₹1,00,000</option>
+            <option>Mini Party - ₹1,00,000</option>
+            <option>Farewell - ₹1,50,000</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="6" align="center"><br><br>
+        <button type="submit" >Submit</button>
+    </td>
+</tr>
+</table>
+</form>
+</center>
+</div>
+</main>
+
+<footer>
+<center>
+<p>
+<br>
+<a href="index.html">HOME</a> | <a href="index.html#about">ABOUT US</a><br>
+Copyright © Make It Happen Kitchen 2021 All Rights Reserved <br>
+</p>
+</center>
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+ 
+    var currentDate = new Date();
+
+ 
+    currentDate.setDate(currentDate.getDate() + 1);
+
+
+    var year = currentDate.getFullYear();
+    var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+    var day = ("0" + currentDate.getDate()).slice(-2);
+    var formattedDate = year + "-" + month + "-" + day;
+
+    
+    document.getElementById("resdate").setAttribute("min", formattedDate);
+
+   
+    document.getElementById("").value = formattedDate;
+});
+
+
+
+    var nameErrorShown = false;
+    var mobErrorShown = false;
+    var mailErrorShown = false;
+
+    function checkName() {
+        var nameField = document.getElementById("name");
+        if (!/^[A-Za-z]+$/.test(nameField.value)) {
+            if (!nameErrorShown) {
+                alert("Invalid name. Name should only contain letters.");
+                nameErrorShown = true;
+            }
+            nameField.value = "";
+            nameField.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function checkMob() {
+        var phoneField = document.getElementById("phone");
+        if (!/^\d{10}$/.test(phoneField.value)) {
+            if (!mobErrorShown) {
+                alert("Invalid mobile number. Please enter a 10-digit number.");
+                mobErrorShown = true;
+            }
+            phoneField.value = "";
+            phoneField.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function checkMail() {
+        var emailField = document.getElementById("mail");
+        var email = emailField.value;
+        var emailPattern = /^\S+@\S+\.\S+$/;
+        if (!emailPattern.test(email)) {
+            if (!mailErrorShown) {
+                alert("Invalid email address. Please enter a valid email.");
+                mailErrorShown = true;
+            }
+            emailField.value = "";
+            emailField.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function checkDate() {
+            var resdateField = document.getElementById("resdate");
+            var selectedDate = new Date(resdateField.value);
+            var currentDate = new Date();
+
+            if (selectedDate <= currentDate) {
+                alert("Invalid date. Please select a future date.");
+                resdateField.value = "";
+                resdateField.focus();
+                return false;
+            }
+            return true;
+        }
+
+    function validateForm() {
+        nameErrorShown = false;
+        mobErrorShown = false;
+        mailErrorShown = false;
+
+        if (!checkName() || !checkMob() || !checkMail() || !checkDate()) {
+            return false;
+        }
+       
+        window.location.href = "oom.html";
+        return false;
+    }
+
+
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+
+
+
+
+    });
+
+function toggleMenu() {
+        var navbar = document.querySelector('.header .navbar');
+        navbar.classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateForm();
+        });
+    });
+       
+</script>
+  </body>
+  </html>

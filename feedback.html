@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0">
+<script src="jQuery-3.6.0.min.js"></script>
+<style type="text/css">
+:root{
+            --main-color:#a32cc4;
+            --black:#13131a;
+            --bg:#010103;
+            --border:.1rem solid rgba(225,225,225,.3);
+        }
+        *{
+           
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+    body{
+        background: url(fed.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+       
+    .header
+        {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg);
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+            padding:1.5rem 7%;
+            border-bottom:var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .header .navbar a{
+            margin:0 1rem;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+        .header .navbar a:hover{
+            color: var(--main-color);
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+        .header .icons div{
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+            margin-left: 2rem;
+        }
+        .header .icons div:hover{
+            color: var(--main-color);
+        }
+#h1
+{
+text-align:left;
+}
+
+#h2
+{
+font-family:Lucida Handwriting,cursive;
+font-size:25px;
+color:brown;
+text-align:left;
+background-color:lightgrey;
+}
+#txt
+{
+font-family:courier;
+font-size:20px;
+color:white;
+text-align:left;
+}
+.container
+{
+width:700px;
+margin:auto;
+border:3px solid grey;
+border-radius: 5px;
+background-color: black;
+padding: 5px;
+}
+input
+{
+width: 100%;
+padding: 6px;
+color:black;
+background-color:lightgrey;
+border: 2px solid darkgrey;
+border-radius: 4px;
+}
+label {
+padding: 12px 12px 12px 0;
+display: inline-block;
+color:white;
+}
+#msg{
+width:100%;
+padding:20px;
+}
+input[type=submit]
+{
+background-color: darkgreen;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+float: right;
+}
+input[type=submit]:hover
+{
+background-color: green;
+}
+footer
+{
+font-family:Apple Chancery,cursive;
+font-size:18px;
+background-color:#a32cc4;
+color:white;
+padding-bottom:15px;
+}
+.col-25
+{
+float: left;
+width: 25%;
+margin-top: 6px;
+}
+.col-75
+{
+float: left;
+width: 75%;
+margin-top: 6px;
+}
+@media screen and (max-width: 600px)
+{
+.col-25, .col-75, input[type=submit] {
+width: 100%;
+margin-top: 0;
+}
+}
+</style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="" height="80px" width="75px">
+        </a>
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="signup.html">SIGNUP</a>        
+            <a href="#menu">CUSTOMIZE EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="reserve.html">PACKAGE EVENT</a>
+            <a href="feedback.html">FEEDBACK</a>
+            <a href="home.html#about">ABOUT</a>
+        </nav>
+    </header>
+
+<main>
+<br><br><br><br><br>
+<span id="h2"><b>&nbsp;$ Drop Us a Line!</b></span>
+<p id="txt"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We’d love to hear from you and we'll do our best to get back to you as soon as possible.</b></p><br>
+
+<div class="container" >
+<center>
+<form onsubmit="return validateForm()">
+<table height="500px" width="400px">
+<tr>
+<td>
+<label for="fname">First Name</label>
+<input type="text" id="fname" name="first" required pattern="[A-Za-z]+"
+onblur="checkFname()" onchange="this.setCustomValidity('')">
+</td>
+</tr>
+<tr>
+<td>
+<label for="lname">Last Name</label>
+<input type="text" id="lname" name="last" required pattern="[A-Za-z]+"
+onblur="checkLname()" onchange="this.setCustomValidity('')">
+</td>
+</tr>
+<tr>
+<td>
+<label for="mail">Email</label>
+<input type="email" id="mail" required
+onblur="checkMail()" onchange="this.setCustomValidity('')">
+</td>
+</tr>
+<tr>
+<td>
+<label for="sub">Subject</label>
+<input type="text" id="sub" required >
+</td>
+</tr>
+<tr>
+<td>
+<label for="msg">Message</label>
+<input type="text" id="msg" required >
+<br><br>
+</td>
+</tr>
+<tr>
+<td><input type="submit" name="" id="submit" value="Submit"></td>
+</tr>
+</table>
+</form>
+</center>
+<br>
+</div>
+<br>
+</main>
+<script>
+function validateForm() {
+   
+
+ 
+    alert('Form submitted successfully!');
+   
+    // Navigate to the home page
+    window.location.href = 'home.html';
+   
+    return false;
+}
+</script>
+<footer>
+<center>
+<p>
+<br>
+<h4>CONTACT US</h4>
+<h5>Phone:044-105107</h5>
+<h5>Write us: makeithappen@gmail.com</h5><br>
+<h5>17, Stella Maris college, Cathedral road, Gopalapuram, Chennai-86</h5> <br>
+<a href="index.html">HOME</a> | <a href="index.html#about">ABOUT US</a><br>
+Copyright © Make It Happen 2021 All Rights Reserved <br>
+</p>
+</center>
+</footer>
+
+
+
+</body>
+</html>

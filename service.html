@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Our Services demo</title>
+    <script src="jQuery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <style type="text/css">
+        :root {
+            --main-color: #a32cc4;
+            --black: #13131a;
+            --bg: #010103;
+            --border: .1rem solid rgba(225, 225, 225, .3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        html {
+            font-size: 75.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: url(servi.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 7%;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 80px;
+            width: 75px;
+        }
+
+        .header .navbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header .navbar a {
+            margin: 0 1rem;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .header .icons {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header .icons div {
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .header .icons div:hover {
+            color: var(--main-color);
+        }
+
+        .container {
+            position: relative;
+            top:90px;
+            margin: auto;
+            background-color: black;
+            opacity: 0.8;
+            padding: 20px;
+            width: 70%;
+            box-sizing: border-box;
+        }
+
+        .table {
+            width: calc(30% - 20px);
+            margin-bottom: 20px;
+            color: white;
+        }
+        footer {
+    position: relative;
+    top: 150px;
+    font-family: Apple Chancery, cursive;
+    font-size: 18px;
+    background-color: #a32cc4;
+    color: white;
+    padding-bottom: 30px; 
+    width: 100%; 
+    margin: 0 auto;
+}
+        @media only screen and (max-width: 768px) {
+       
+            .header .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                z-index: 999;
+            }
+
+            .header .navbar.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                font-size: 2rem;
+                color: white;
+                margin-right: 1rem;
+            }
+
+            .menu-bar {
+                display: none;
+                background: var(--bg);
+                width: 100%;
+                text-align: center;
+                max-width: 30px;
+                margin: auto;
+            }
+
+            .menu-bar.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-bar a {
+                margin: 1rem 0;
+                font-size: 1.6rem;
+                color: #fff;
+            }
+
+            .menu-btn:hover,
+            .menu-bar a:hover {
+                color: var(--main-color);
+            }
+        }
+        #MyForm {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #MyForm div {
+            width: calc(30% - 20px);
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        #MyForm input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .runningTotal {
+            position: relative;
+            top: 100px;
+            margin-top: 20px;
+            color: white;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        #sumbtn {
+            position: relative;
+            top: 110px;
+            margin-top: 20px;
+        }
+
+        #sumbtn button {
+            padding: 10px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #sumbtn button:hover {
+            background-color: #8c1aff;
+        }
+       
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="#">
+                <img src="logo.png" alt="" height="80px" width="75px">
+            </a>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">HOME</a>
+            <a href="signup.html">SIGNUP</a>
+            <a href="service.html">OUR SERVICES</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="reser.html">RESERVE AN EVENT</a>
+            <a href="feedback.html">FEEDBACK</a>
+            <a href="home.html#about">ABOUT</a>
+        </nav>
+        <div class="icons">
+            <div onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <div>
+        <h1 id="Header2">Select Services That You Want</h1>
+    </div>
+
+    <div class="container">
+        <form id="MyForm">
+            <div>
+                <label><input type="checkbox" data-amount="1000"> Complete Management Layout</label><br>
+                <label><input type="checkbox" data-amount="1400"> Venue Selections</label><br>
+<label><input type="checkbox" data-amount="1700"> Guest List Management</label><br>
+                <label><input type="checkbox" data-amount="1300"> Event Secretariat</label><br>
+<label><input type="checkbox" data-amount="5900"> Transportation Facilities</label><br>
+                <label><input type="checkbox" data-amount="7400"> City Tours</label><br>
+<label><input type="checkbox" data-amount="9000"> Flight Facilities</label><br>
+                <label><input type="checkbox" data-amount="3400"> Theme Designs</label><br>
+                <label><input type="checkbox" data-amount="2700"> Flex And Print Designs</label><br>
+                <label><input type="checkbox" data-amount="3200"> Usher Selection And Training</label><br>
+<label><input type="checkbox" data-amount="2900"> Complete Ventor Management</label><br>
+                <label><input type="checkbox" data-amount="2400"> Help Desk</label><br>
+<label><input type="checkbox" data-amount="2000"> Energetic Facilitators</label><br>
+            </div>
+
+            <div>
+                <label><input type="checkbox" data-amount="7300"> Event Concept Ideas</label><br>
+                <label><input type="checkbox" data-amount="4100"> Content Development</label><br>
+                <label><input type="checkbox" data-amount="25700"> Media Management</label><br>
+                <label><input type="checkbox" data-amount="13300"> Post Event Follow Ups</label><br>
+<label><input type="checkbox" data-amount="8900"> Documentaries</label><br>
+                <label><input type="checkbox" data-amount="24400"> Cultural Nights</label><br>
+<label><input type="checkbox" data-amount="9000"> Charter Facilities</label><br>
+                <label><input type="checkbox" data-amount="9400"> MC</label><br>
+                <label><input type="checkbox" data-amount="10700">Artist Management</label><br>
+                <label><input type="checkbox" data-amount="19200"> Complete Multimedia Support</label><br>
+<label><input type="checkbox" data-amount="9900"> On Ground Management</label><br>
+                <label><input type="checkbox" data-amount="9400"> Complete Ventor Management</label><br>
+<label><input type="checkbox" data-amount="12000"> Hall Management</label><br>
+            </div>
+
+            <div>
+                <label><input type="checkbox" data-amount="1890"> Sourvenir Design & Production</label><br>
+                <label><input type="checkbox" data-amount="2230"> Complete Branding & Production</label><br>
+                <label><input type="checkbox" data-amount="10700"> Print Production</label><br>
+                <label><input type="checkbox" data-amount="9300"> Creative Consulting</label><br>
+<label><input type="checkbox" data-amount="12900"> Decor Management</label><br>
+                <label><input type="checkbox" data-amount="7400"> Security Facilities</label><br>
+<label><input type="checkbox" data-amount="9000"> Ambience Management</label><br>
+                <label><input type="checkbox" data-amount="4400"> On-Site Offices</label><br>
+                <label><input type="checkbox" data-amount="4700"> IT Support</label><br>
+                <label><input type="checkbox" data-amount="3200"> Business Centers</label><br>
+<label><input type="checkbox" data-amount="4900"> RSVP Management</label><br>
+                <label><input type="checkbox" data-amount="34400"> Complete Food Facilities</label><br>
+<label><input type="checkbox" data-amount="22000"> Return Gifts</label><br>
+            </div>
+        </form>
+    </div>
+
+    <div class="runningTotal"></div>
+
+    <div id="sumbtn">
+        <button>Pay</button>
+    </div>
+   
+    <script>
+        function toggleMenu() {
+            var navbar = document.getElementById('navbar');
+            var menuBar = document.getElementById('menu-bar');
+            navbar.classList.toggle('active');
+            menuBar.classList.toggle('active');
+        }
+
+       
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        const output = document.querySelector('.runningTotal');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const runningTotal = Array.from(checkboxes)
+                    .filter(i => i.checked)
+                    .map(i => i.dataset.amount ??= 0)
+                    .reduce((total, item) => total + parseFloat(item), 0);
+
+                const formattedTotal = new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR'
+                }).format(runningTotal);
+
+                output.innerHTML = `Total: ${formattedTotal}`;
+            });
+        });
+
+    
+        document.getElementById('sumbtn').addEventListener('click', function () {
+          
+            window.location.href = 'oom.html';
+        });
+    </script>
+<footer>
+    <center>
+    <p>
+    <br>
+    <a href="index.html">HOME</a> | <a href="index.html#about">ABOUT US</a><br>
+    Copyright © Make It Happen Kitchen 2021 All Rights Reserved <br>
+    </p>
+    </center>
+</footer>
+</body>
+</html>
